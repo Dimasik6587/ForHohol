@@ -47,3 +47,4 @@ for (var i=0;i<maxN;i++){
             document.getElementById("k").innerHTML +="<a href=\"\">ќформить заказ</a>";
             }
         }
+SDDASDASDASD

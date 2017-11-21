@@ -1,1 +1,49 @@
-1111111111111111111111111
+function sleep(ms) {
+    ms += new Date().getTime();
+    while (new Date() < ms){}
+    }     
+var maxN=6;
+var r=0;
+var name=["Штаны","Куртка","Ветровка"  ,"Свитшот","Футболка","Шапка"];
+var ch=[-2,4,11,20,28,37,43,48];
+var prise=[1200,2500,2000,1200,900,500];
+var KorzIt=[0,0,0,0,0,0];    
+for (var i=0;i<maxN;i++){
+        r++;
+        document.write("<figure >");
+        document.write("<p><img src=\"image/"+i+".png\"></p>");
+        document.write("<figcaption>");
+        for (var j=ch[i]+2;j<=ch[i+1]; j++){
+            document.write(name[j]);
+            }
+        document.write("</figcaption>");        
+        document.write("<p id=\"s"+i+"\">"+prise[i]+"?</p>");
+        document.write("<button id=\"d"+i+"\" title=\"В корзину\" width=\"100\" height=\"75\" onclick=\"Korz("+i+")\">Купить</button>");
+        document.write("</figure>");
+            if (r%3==0) document.write("<br>");      
+    }
+    function Korz(n){
+    //  alert("Добавлено в корзину!");    
+        KorzIt[n]+=1;    
+        }   
+        function KorzOpen(){
+            document.getElementById("k").innerHTML="";
+            let Itog=0;
+            for(var i=0;i<maxN;i++)
+            {
+                Itog+=KorzIt[i]*prise[i];
+                if(KorzIt[i]>0)
+                {  
+                    document.getElementById("k").innerHTML += KorzIt[i]+" ";
+                    for (var j=ch[i]+2;j<=ch[i+1]; j++){
+                        document.getElementById("k").innerHTML +=name[j];
+                        }
+                    document.getElementById("k").innerHTML += " на сумму "+KorzIt[i]*prise[i]+" рублей" +'<br>';
+                
+                }    
+            }
+            if (Itog>0)
+            {document.getElementById("k").innerHTML += "Итого Ваш заказ на сумму "+Itog+" рублей" +'<br>';
+            document.getElementById("k").innerHTML +="<a href=\"\">Оформить заказ</a>";
+            }
+        }
